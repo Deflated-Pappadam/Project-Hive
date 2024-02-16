@@ -14,7 +14,7 @@ import { addDoc, doc, setDoc } from "firebase/firestore";
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
     .then((userDetails) => {
-      router.push('/');
+      router.push('/innovators/dash');
     })
 .catch((err)=> console.log(err))
   }
