@@ -35,7 +35,7 @@ import { auth } from "@/app/utils/firebase";
           }}
           className="inputField"
         />
-        <input type="text" />
+     
         <button>Login</button>
       </form>
     </div>
