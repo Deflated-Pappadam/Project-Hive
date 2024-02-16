@@ -20,6 +20,12 @@ dependencies:
   react-dom:
     specifier: ^18
     version: 18.2.0(react@18.2.0)
+  react-fast-marquee:
+    specifier: ^1.6.4
+    version: 1.6.4(react-dom@18.2.0)(react@18.2.0)
+  react-firebase-hooks:
+    specifier: ^5.1.1
+    version: 5.1.1(firebase@10.8.0)(react@18.2.0)
 
 devDependencies:
   '@types/node':
@@ -2808,6 +2814,26 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-fast-marquee@1.6.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-LAgvhRmHdqaUQ8R5jCUwzEGFUIjnCCt3T3W8X7j7wF6DWe0SATlpP0JX1V0pp2qX3DYUezmn1Iz5AtRFdL2EWQ==}
+    peerDependencies:
+      react: '>= 16.8.0 || 18.0.0'
+      react-dom: '>= 16.8.0 || 18.0.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /react-firebase-hooks@5.1.1(firebase@10.8.0)(react@18.2.0):
+    resolution: {integrity: sha512-y2UpWs82xs+39q5Rc/wq316ca52QsC0n8m801V+yM4IC4hbfOL4yQPVSh7w+ydstdvjN9F+lvs1WrO2VYxpmdA==}
+    peerDependencies:
+      firebase: '>= 9.0.0'
+      react: '>= 16.8.0'
+    dependencies:
+      firebase: 10.8.0
+      react: 18.2.0
     dev: false
 
   /react-is@16.13.1:
