@@ -1,61 +1,77 @@
-'use client'
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Button } from "@/components/ui/button"
-import { useState } from "react"
-import { addDoc, collection } from "firebase/firestore"
-import { db } from "@/app/utils/firebase"
+"use client";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/app/utils/firebase";
 
 export default function Component() {
-  const [Name, setName] = useState("")
-  const [Description, setDescription] = useState("")
-  const [requirements, setRequirements] = useState("")
-  const [Equity, setEquity] = useState(false)
-  const [milestones, setMilestone] = useState([])
+  const [Name, setName] = useState("");
+  const [Description, setDescription] = useState("");
+  const [requirements, setRequirements] = useState("");
+  const [Equity, setEquity] = useState(false);
+  const [milestones, setMilestone] = useState([]);
 
   const handleSubmit = () => {
-    addDoc(collection(db, 'innovations'), {
+    addDoc(collection(db, "innovations"), {
       Name: Name,
       Description: Description,
       Requirements: requirements,
       Equity: Equity,
       Milestones: [
         {
-          Name: 'MileStone 1',
+          Name: "MileStone 1",
           Cost: 1000,
-          Status: 'incomplete'
+          Status: "incomplete",
         },
         {
-          Name: 'MileStone 2',
+          Name: "MileStone 2",
           Cost: 2000,
-          Status: 'incomplete'
+          Status: "incomplete",
         },
         {
-          Name: 'MileStone 3',
+          Name: "MileStone 3",
           Cost: 4000,
-          Status: 'incomplete'
-        }
-      ]
-    })
-  }
+          Status: "incomplete",
+        },
+      ],
+    });
+  };
 
   return (
     <div className="w-full h-full flex justify-center items-center  mx-auto">
       <div className="container px-4 max-w-[50vw]">
         <div className="space-y-2">
-          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl xl:text-5xl/none">Submit your idea</h1>
-          <p className="text-gray-500 dark:text-gray-400">Have a great idea? Submit it here and we&apos;ll take a look.</p>
+          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl xl:text-5xl/none">
+            Submit your idea
+          </h1>
+          <p className="text-gray-500 dark:text-gray-400">
+            Have a great idea? Submit it here and we&apos;ll take a look.
+          </p>
         </div>
         <div className="space-y-4">
           <div className="space-y-2">
-            <label className="block text-sm font-semibold tracking-wide peer" htmlFor="idea-name">
+            <label
+              className="block text-sm font-semibold tracking-wide peer"
+              htmlFor="idea-name"
+            >
               Idea Name
             </label>
-            <Input className="peer h-10" id="idea-name" placeholder="Enter the name of your idea" onChange={(e) => setName(e.target.value)} value={Name}/>
+            <Input
+              className="peer h-10"
+              id="idea-name"
+              placeholder="Enter the name of your idea"
+              onChange={(e) => setName(e.target.value)}
+              value={Name}
+            />
           </div>
           <div className="space-y-2">
-            <label className="block text-sm font-semibold tracking-wide peer" htmlFor="idea-description">
+            <label
+              className="block text-sm font-semibold tracking-wide peer"
+              htmlFor="idea-description"
+            >
               Description
             </label>
             <Textarea
@@ -67,7 +83,10 @@ export default function Component() {
             />
           </div>
           <div className="space-y-2">
-            <label className="block text-sm font-semibold tracking-wide peer" htmlFor="idea-requirements">
+            <label
+              className="block text-sm font-semibold tracking-wide peer"
+              htmlFor="idea-requirements"
+            >
               Requirements
             </label>
             <Textarea
@@ -78,11 +97,64 @@ export default function Component() {
               value={requirements}
             />
           </div>
-          <div className="flex items-center space-x-2">
-            <Checkbox
-              id="equity"
-              onChange={() => setEquity(!Equity)} 
+          <div className="space-y-2">
+            <label
+              className="block text-sm font-semibold tracking-wide peer"
+              htmlFor="idea-requirements"
+            >
+              Milestone 1
+            </label>
+            <input
+              className="peer h-10 w-full rounded-md border p-4"
+              id="milestone1"
+              placeholder="Enter the amount"
             />
+            <textarea
+              className="flex min-h-[80px] w-full rounded-md border p-4 "
+              placeholder="Milestone description"
+              id="milestone1-description"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label
+              className="block text-sm font-semibold tracking-wide peer"
+              htmlFor="idea-requirements"
+            >
+              Milestone 1
+            </label>
+            <input
+              className="peer h-10 w-full rounded-md border p-4"
+              id="milestone2"
+              placeholder="Enter the amount"
+            />
+            <textarea
+              className="flex min-h-[80px] w-full rounded-md border p-4 "
+              placeholder="Milestone description"
+              id="milestone2-description"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label
+              className="block text-sm font-semibold tracking-wide peer"
+              htmlFor="idea-requirements"
+            >
+              Milestone 1
+            </label>
+            <input
+              className="peer h-10 w-full rounded-md border p-4"
+              id="milestone3"
+              placeholder="Enter the amount"
+            />
+            <textarea
+              className="flex min-h-[80px] w-full rounded-md border p-4 "
+              placeholder="Milestone description"
+              id="milestone3-description"
+            />
+          </div>
+          <div className="flex items-center space-x-2">
+            <Checkbox id="equity" onChange={() => setEquity(!Equity)} />
             <label className="text-sm leading-none" htmlFor="equity">
               Require equity for this idea
             </label>
@@ -91,6 +163,5 @@ export default function Component() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
