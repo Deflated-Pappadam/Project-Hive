@@ -125,7 +125,7 @@ export default function Component({ params }: { params: { id: string } }) {
 
         const investorsRef = doc(db, 'investors', accounts[0], 'investments', params.id);
         const investdoc = await getDoc(investorsRef)
-        if(!investdoc){
+        if(!investdoc.exists()){
           setDoc(investorsRef, {
             totalInvested: amt
           })
