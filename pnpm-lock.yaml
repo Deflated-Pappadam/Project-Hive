@@ -88,6 +88,9 @@ devDependencies:
   '@nomicfoundation/hardhat-verify':
     specifier: ^2.0.0
     version: 2.0.4(hardhat@2.20.1)
+  '@openzeppelin/contracts':
+    specifier: ^5.0.1
+    version: 5.0.1
   '@typechain/ethers-v6':
     specifier: ^0.5.0
     version: 0.5.1(ethers@6.11.1)(typechain@8.3.2)(typescript@5.3.3)
@@ -1814,6 +1817,10 @@ packages:
       '@nomicfoundation/solidity-analyzer-win32-arm64-msvc': 0.1.1
       '@nomicfoundation/solidity-analyzer-win32-ia32-msvc': 0.1.1
       '@nomicfoundation/solidity-analyzer-win32-x64-msvc': 0.1.1
+    dev: true
+
+  /@openzeppelin/contracts@5.0.1:
+    resolution: {integrity: sha512-yQJaT5HDp9hYOOp4jTYxMsR02gdFZFXhewX5HW9Jo4fsqSVqqyIO/xTHdWDaKX5a3pv1txmf076Lziz+sO7L1w==}
     dev: true
 
   /@pkgjs/parseargs@0.11.0:
@@ -4461,6 +4468,7 @@ packages:
       is-hex-prefixed: 1.0.0
       strip-hex-prefix: 1.0.0
     dev: true
+    bundledDependencies: false
 
   /evp_bytestokey@1.0.3:
     resolution: {integrity: sha512-/f2Go4TognH/KvCISP7OUsHn85hT9nUkxxA9BEWxFn+Oj9o8ZNLm/40hdlgSLyuOimsrTKLUMEorQexp/aPQeA==}

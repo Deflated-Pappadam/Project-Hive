@@ -62,13 +62,12 @@ contract FishTank {
         emit Cancel(_id);
     }
 
-    function invest(uint _id) payable external {
+    function invest(uint _id, uint amt) payable external {
         Idea storage idea = ideas[_id];
-        require(msg.value > 0, "Cannot invest nothing!");
         require(block.timestamp <= idea.endAt, "Campaign has already ended");
-        idea.invested += msg.value;
-        totalInvested[_id][msg.sender] += msg.value;
-        emit Invest(_id, msg.sender, msg.value);
+        idea.invested += amt;
+        totalInvested[_id][msg.sender] += amt;
+        emit Invest(_id, msg.sender, amt);
     }
 
     function withdraw(uint _id) public {

@@ -10,7 +10,7 @@ import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import { db, getUser } from "@/app/utils/firebase";
 import { useRouter } from "next/navigation";
 import { User } from "firebase/auth";
-import BitBites from "@/abi/FishTank.json";
+import FishTank from "@/abi/FishTank.json";
 
 export default function Component() {
   const [Name, setName] = useState("");
@@ -62,7 +62,7 @@ export default function Component() {
     if (window.ethereum) {
       const provider = new ethers.BrowserProvider(window.ethereum)
       const signer = await provider?.getSigner();
-      const contract = new ethers.Contract(contractAddress, BitBites.abi, signer);
+      const contract = new ethers.Contract(contractAddress, FishTank.abi, signer);
       try {
         setIsProcessing(true);
         const id = await contract.count();
@@ -90,6 +90,7 @@ export default function Component() {
       Requirements: requirements,
       Equity: Equity,
       Milestones: milestones,
+      totalInvested: 0,
     });
     router.push('/innovators/dash')
   };

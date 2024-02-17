@@ -80,7 +80,7 @@ export default function Component({params} : {params: {id: string}}) {
         setIdeaDetails(d.data());
       }
     })
-  }, [curuser])
+  }, [params.id, router])
 
   return (
     <div className="w-full">
@@ -148,6 +148,9 @@ export default function Component({params} : {params: {id: string}}) {
           </div>
           <CurvedlineChart className="w-full h-[200px] " />
         </div>
+      </div>
+      <div>
+        
       </div>
     </div>
   );

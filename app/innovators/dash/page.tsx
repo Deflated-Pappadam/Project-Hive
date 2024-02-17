@@ -83,14 +83,8 @@ export default function Component() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {/* <TableRow className="w-full">
-                <TableCell className="font-medium">Kozhi Koodu</TableCell>
-                <TableCell className="text-left">Rhon needs a home.</TableCell>
-                <TableCell>home</TableCell>
-                <TableCell className="text-right">$ 200 | 500</TableCell>
-              </TableRow> */}
               {data.map((doc) => {
-                return <TableRow key={doc.id} className="w-full" onClick={()=> router.push(`/innovators/idea/${doc.id}`)}>
+                return <TableRow key={doc.id} className="w-full" onClick={()=> router.push(`/idea/${doc.id}`)}>
                   <TableCell className="font-medium">{doc.data.Name}</TableCell>
                   <TableCell className="text-left">{doc.data.Description}</TableCell>
                   <TableCell>{doc.data.Requirements}</TableCell>
