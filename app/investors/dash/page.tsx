@@ -8,7 +8,7 @@ import {
   Card,
 } from "@/components/ui/card";
 import { ResponsiveLine } from "@nivo/line";
-import { JSX, ClassAttributes, HTMLAttributes } from "react";
+import { JSX, ClassAttributes, HTMLAttributes, useEffect, useState } from "react";
 import {
   TableHead,
   TableRow,
@@ -21,6 +21,21 @@ import Navbar from "@/app/components/Navbar";
 import TagBox from "@/app/components/TagBox";
 
 export default function Component() {
+  const [accounts, setAccounts] = useState([]);
+  const [isConnected, setIsConnected] = useState(false)
+  useEffect(() => {
+    console.log(accounts);
+    setIsConnected(Boolean(accounts[0]));
+  }, [isConnected, accounts]);
+
+  const connectAccount = async () => {
+    if (window.ethereum) {
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      setAccounts(accounts);
+    }
+  };  
   return (
     <div className="bg-[#fcf9f5] min-h-screen p-8">
       <Navbar />
