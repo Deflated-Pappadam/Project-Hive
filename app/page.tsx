@@ -34,37 +34,38 @@ Struggling to bring your ideas to life? We&apos;ve got you covered!
           </h1>
         </Marquee>
         <div className="flex flex-wrap w-[60%] mx-auto gap-6 justify-center items-center">
-          <TagBox text="Multi-Tier System" color="#f3d6b3" />
+          <TagBox text="Multi-Pillar System" color="#f3d6b3" />
           <TagBox text="Core Verification" color="#f3e6b3" />
-          <TagBox text="Public-Equity" color="#eacbac" />
+          <TagBox text="Enhanced Exposure" color="#eacbac" />
           <TagBox text="Requirement based" color="#f3e6b3" />
-          <TagBox text="" color="#f3e6b3" />
-          <TagBox text="Test Tag" color="#f3e6b3" />
-          <TagBox text="Test Tagdfgsdf" color="#eacbac" />
-          <TagBox text="Test Tag" color="#f3e6b3" />
+          <TagBox text="Simplified User Experience" color="#f3e6b3" />
+          <TagBox text="Blockchain integrated" color="#f3e6b3" />
+          <TagBox text="Factored Prioritization" color="#eacbac" />
+          <TagBox text="Idea Driven" color="#f3e6b3" />
         </div>
       </section>
 
      
       <section className="flex flex-col bg-[#f3e6bc] w-full h-full justify-center items-center p-10 my-10 rounded-[3rem]">
       <h1 className="text-[4rem] poppins-regular">
-           some heading
+            Scenarios
       </h1>
       <h2 className="text-[2rem] poppins-light text-center">
-           lorem ipsum askf ajhf  avfjhg asjfg agfiugwkesa asfgui lorem ipsum askf ajhf  avfjhg asjfg agfiugwkesa asfgui
+      Requests are managed in accordance with specified requirements and preset conditions. (Name) primarily encompasses the following factors that determine the state, essence, and fate of an initiative. 
       </h2>
        <div className="flex flex-wrap p-2 ">
        <DataBox
           img="https://assets-global.website-files.com/656e2bf7323334f83eee35f6/658055ed923b19afb55334ca_reportcard.png"
-          text=" Stay informed with digital health reports and records"
+          text="Assuring exposure for deserving initiatives and ideas."
         ></DataBox>
         <DataBox
           img="https://assets-global.website-files.com/656e2bf7323334f83eee35f6/658055ed923b19afb55334ca_reportcard.png"
-          text=" Stay informed with digital health reports and records"
+          text=" Monetary support via grants, acquisitions, and donations."
         ></DataBox>
         <DataBox
           img="https://assets-global.website-files.com/656e2bf7323334f83eee35f6/658055ed923b19afb55334ca_reportcard.png"
-          text=" Stay informed with digital health reports and records"
+          text=" 
+          Technical aid through mentorship, labor, and advice."
         ></DataBox>
        </div>
       </section>
