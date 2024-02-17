@@ -133,9 +133,12 @@ export default function Component() {
                       0
                     )}
                   </p>
-                  <p className="pt-5">Wallet Number</p>
+                  <p className="pt-5">Wallet Address</p>
                   <p className="text-lg ">{accounts[0]}</p>
-                  <p className="text-sm"></p>
+                  <p className="text-lg">Credits : {investments.reduce(
+                      (acc, curr) => acc + curr.data.totalInvested,
+                      0
+                    )/100}</p>
                 </CardContent>
               </Card>
               <div className="col-span-1">
@@ -148,7 +151,7 @@ export default function Component() {
             </div>
 
             <div className="mt-4">
-              <a href="/innovations" className="bg-[#2e2f33] px-4 py-2 w-fit text-white poppins-regular text-3xl justify-end flex hover:rounded-[1.5rem] hover:cursor-pointer transition-all duration-300">Explore </a>
+              <a href="/innovations" className="bg-[#2e2f33] px-4 py-2 w-fit text-white poppins-regular text-3xl justify-end flex hover:rounded-[1.5rem] rounded-[0.5rem]  hover:cursor-pointer transition-all duration-300">Explore </a>
               <Table>
                 <TableHeader>
                   <TableRow>
