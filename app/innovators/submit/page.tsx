@@ -31,8 +31,8 @@ export default function Component() {
     })
   }, [])
 
-  const handleSubmit = () => {
-    addDoc(collection(db, "innovations"), {
+  const handleSubmit =async () => {
+    await addDoc(collection(db, "innovations"), {
       User: curruser?.uid,
       Name: Name,
       Description: Description,
@@ -40,6 +40,7 @@ export default function Component() {
       Equity: Equity,
       Milestones: milestones,
     });
+    router.push('/innovators/dash')
   };
 
   return (
@@ -77,7 +78,7 @@ export default function Component() {
               Description
             </label>
             <Textarea
-              className="peer h-[120px]"
+              className="peer h-[120px] bg-white"
               id="idea-description"
               placeholder="Enter the description of your idea"
               onChange={(e) => setDescription(e.target.value)}
