@@ -124,9 +124,17 @@ export default function Component({ params }: { params: { id: string } }) {
         });
 
         const investorsRef = doc(db, 'investors', accounts[0], 'investments', params.id);
+        const investdoc = await getDoc(investorsRef)
+        if(!investdoc){
+          setDoc(investorsRef, {
+            totalInvested: amt
+          })
+        }
+        else {
         updateDoc(investorsRef, { 
             totalInvested: increment(amt),
         });
+      }
 
         setIsProcessing(false);
         setshowThankyouMsg(true);
