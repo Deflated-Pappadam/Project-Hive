@@ -25,30 +25,45 @@ import {
   Table,
 } from "@/components/ui/table";
 import Navbar from "@/app/components/Navbar";
-import { DocumentData, collection, doc, getDocs } from "firebase/firestore";
+import {
+  DocumentData,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+} from "firebase/firestore";
 import { db } from "@/app/utils/firebase";
+import { useRouter } from "next/navigation";
 
 export default function Component() {
   const [accounts, setAccounts] = useState([]);
   const [isConnected, setIsConnected] = useState(false);
   const [investments, setInvestments] = useState<DocumentData[]>([]);
+  const router = useRouter()
   useEffect(() => {
-    console.log(accounts);
     setIsConnected(Boolean(accounts[0]));
   }, [isConnected, accounts]);
 
   useEffect(() => {
     if (!accounts[0]) return;
     const investorRef = collection(db, "investors", accounts[0], "investments");
-    let data: DocumentData[] = [];
     getDocs(investorRef).then((docs) => {
-      docs.forEach((doc) => {
-        data.push(doc.data());
+      const ideaData: DocumentData[] = [];
+      const ideaDataPromises: Promise<any>[] = [];
+      docs.forEach((document) => {
+        const ideaRef = doc(db, "innovations", document.id);
+        const promise = getDoc(ideaRef).then((d) => {
+          if (d.exists()) {
+            ideaData.push({id: document.id, data: d.data()!});
+          }
+        });
+        ideaDataPromises.push(promise);
+      });
+      Promise.all(ideaDataPromises).then(() => {
+        setInvestments(ideaData);
+        console.log(ideaData);
       });
     });
-    setInvestments(data);
-    console.log(data);
-    
   }, [accounts]);
 
   const connectAccount = async () => {
@@ -104,22 +119,17 @@ export default function Component() {
                   <TableRow>
                     <TableHead>Innovation</TableHead>
                     <TableHead>Description</TableHead>
-                    <TableHead>Category</TableHead>
-                    <TableHead>Innovator</TableHead>
-                    <TableHead className="text-right">Amount</TableHead>
+                    <TableHead className="text-right">Total Invested</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {investments.map((data, i) => (
-                    <TableRow key={i}>
-                      <TableCell className="font-medium">{}</TableCell>
-                      <TableCell className="text-left">
-                        {}
+                  {investments.map((d, i) => (
+                    <TableRow onClick={()=> router.push(`/idea/${d.id}`)} key={i}>
+                      <TableCell className="font-medium">{d.data.Name}</TableCell>
+                      <TableCell className="text-left">{d.data.Description}</TableCell>
+                      <TableCell className="text-right">
+                        {d.data.totalInvested}
                       </TableCell>
-                      <TableCell>home</TableCell>
-                      <TableCell>Rhon S George</TableCell>
-
-                      <TableCell className="text-right">$200/5000+</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
