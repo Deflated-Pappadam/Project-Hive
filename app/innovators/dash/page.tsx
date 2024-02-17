@@ -1,5 +1,6 @@
 "use client";
 
+import Navbar from "@/app/components/Navbar";
 import { db, getUser } from "@/app/utils/firebase";
 import { Button } from "@/components/ui/button";
 import {
@@ -63,7 +64,8 @@ export default function Component() {
   }, [curruser]);
 
   return (
-    <div className="flex">
+    <div className="flex flex-col">
+      <Navbar/>
       <main className="flex-grow p-6 bg-[#fcf9f5]">
         <section id="profile" className="flex p-10 px-[6vw]">
           <div>
@@ -74,7 +76,7 @@ export default function Component() {
           </div>
           <div className="p-10">
             <h1 className="text-[4rem] poppins-semibold">
-              {userDetails?.name}{" "}
+              {userDetails?.name}
             </h1>
             <h2 className="text-[2.5rem] poppins-regular"> Innovator</h2>
           </div>
@@ -97,7 +99,7 @@ export default function Component() {
                 <TableHead>Innovation</TableHead>
                 <TableHead>Description</TableHead>
                 <TableHead>Category</TableHead>
-                <TableHead className="text-right">Amout</TableHead>
+                <TableHead className="text-right">Amount</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

@@ -66,7 +66,7 @@ export default function Component() {
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center  mx-auto">
+    <div className="w-full h-full flex justify-center items-center  mx-auto p-10">
         <div className="container px-4 max-w-[50vw]">
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl xl:text-5xl/none">
@@ -214,7 +214,7 @@ export default function Component() {
                 Require equity for this idea
               </label>
             </div>
-            <Button onClick={issueIdea}>Submit</Button>
+            <Button onClick={issueIdea} className="bg-[#2e2f33]  text-white px-6 py-4 text-center">Submit</Button>
           </div>
         </div>
     </div>

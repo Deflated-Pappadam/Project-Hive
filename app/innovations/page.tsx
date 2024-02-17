@@ -80,7 +80,7 @@ export default function Component() {
             </TableHeader>
             <TableBody>
               {data.map((doc) => {
-                return <TableRow key={doc.id} className="w-full" onClick={()=> router.push(`/idea/${doc.id}`)}>
+                return <TableRow key={doc.id} className="w-full" onClick={()=> router.push(`/investors/invest/${doc.id}`)}>
                   <TableCell className="font-medium">{doc.data.Name}</TableCell>
                   <TableCell className="text-left">{doc.data.Description}</TableCell>
                   <TableCell>{doc.data.Requirements}</TableCell>
