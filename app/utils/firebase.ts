@@ -1,5 +1,5 @@
 import { initializeApp,getApp,getApps } from "firebase/app";
-import {getAuth} from "firebase/auth"
+import {User, getAuth, onAuthStateChanged} from "firebase/auth"
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -16,5 +16,12 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+const getUser = (callback: (user:User | null) => void) => {
+  const unsubscribe = onAuthStateChanged(auth, (userData) => {
+    callback(userData)
+  })
+  return unsubscribe;
+}
 
-export {app,auth,db}
+
+export {app,auth,db,getUser}

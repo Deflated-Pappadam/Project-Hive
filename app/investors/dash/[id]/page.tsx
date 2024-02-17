@@ -18,6 +18,7 @@ import {
   Table,
 } from "@/components/ui/table";
 import Navbar from "@/app/components/Navbar";
+import TagBox from "@/app/components/TagBox";
 
 export default function Component() {
   return (
@@ -53,20 +54,23 @@ export default function Component() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-[150px]">Idea</TableHead>
-                  <TableHead>Price</TableHead>
-                  <TableHead>Innovator</TableHead>
-                  <TableHead className="w-full flex justify-end">Description</TableHead>
+                <TableHead>Innovation</TableHead>
+              <TableHead>Description</TableHead>
+              <TableHead>Category</TableHead>
+              <TableHead>Innovator</TableHead>
+              <TableHead className="text-right">Amount</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 <TableRow>
                   <TableCell className="font-medium">Kozhi Koodu</TableCell>
-                  <TableCell>$200/5000+</TableCell>
-                  <TableCell>Rhon S George</TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-left">
                     Rhon needs a home.
                   </TableCell>
+                  <TableCell>home</TableCell>
+                  <TableCell>Rhon S George</TableCell>
+                 
+                  <TableCell className="text-right">$200/5000+</TableCell>
                 </TableRow>
                 
               </TableBody>
