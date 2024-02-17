@@ -86,7 +86,7 @@ export default function Component({ params }: { params: { id: string } }) {
   const [totalMinted, setTotalMinted] = useState(0);
   const [amount, setAmount] = useState<number | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [showThankyouMsg, setshowThankyouMsg] = useState(true);
+  const [showThankyouMsg, setshowThankyouMsg] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const onAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
