@@ -1,15 +1,26 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
-import { auth, db } from "@/app/utils/firebase";
+import React, { useEffect, useState } from "react";
+import { auth, db, getUser } from "@/app/utils/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { addDoc, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [aadharno, setAadharno] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    return getUser((user) => {
+      if (user) {
+        router.push('/innovators/dash')
+      }
+    })
+  }, [])
+
+
 
   const handleLogin = () => {
     createUserWithEmailAndPassword(auth, email, password).then(
@@ -25,9 +36,6 @@ function Signup() {
       }
     );
   };
-
-  // console.log("Email is " + email);
-  // console.log("Password is " + password);
 
   return (
     <div className="w-screen h-screen flex  justify-center items-center gap-10">

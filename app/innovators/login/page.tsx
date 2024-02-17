@@ -1,18 +1,24 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
-import { auth, db } from "@/app/utils/firebase";
+import React, { useEffect, useState } from "react";
+import { auth, getUser } from "@/app/utils/firebase";
 import {
-  Auth,
-  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { addDoc, doc, setDoc } from "firebase/firestore";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    return getUser((user) => {
+      if (user) {
+        console.log(user);
+        router.push('/innovators/dash')
+      }
+    })
+  }, [])
 
   const handleLogin = (e: any) => {
     e.preventDefault();
