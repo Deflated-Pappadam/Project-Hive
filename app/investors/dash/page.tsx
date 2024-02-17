@@ -82,7 +82,7 @@ export default function Component() {
         const ideaRef = doc(db, "innovations", document.id);
         const promise = getDoc(ideaRef).then((d) => {
           if (d.exists()) {
-            ideaData.push({ id: document.id, data: d.data()! });
+            ideaData.push({ id: document.id, data: { ...document.data(), ...d.data() } });
           }
         });
         ideaDataPromises.push(promise);
@@ -129,16 +129,16 @@ export default function Component() {
                   <p className="text-3xl">
                     $
                     {investments.reduce(
-                      (acc, curr) => acc + curr.data.totalInvested,
+                      (acc, curr) => acc + curr.data.invInvested,
                       0
                     )}
                   </p>
                   <p className="pt-5">Wallet Address</p>
                   <p className="text-lg ">{accounts[0]}</p>
                   <p className="text-lg">Credits : {investments.reduce(
-                      (acc, curr) => acc + curr.data.totalInvested,
+                      (acc, curr) => acc + curr.data.invInvested,
                       0
-                    )/100}</p>
+                    )/100}pdm</p>
                 </CardContent>
               </Card>
               <div className="col-span-1">
@@ -173,7 +173,7 @@ export default function Component() {
                         {d.data.Description}
                       </TableCell>
                       <TableCell className="text-right">
-                        {d.data.totalInvested}
+                        {d.data.invInvested}
                       </TableCell>
                     </TableRow>
                   ))}

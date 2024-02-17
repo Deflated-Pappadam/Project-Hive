@@ -131,11 +131,11 @@ export default function Component({ params }: { params: { id: string } }) {
         const investdoc = await getDoc(investorsRef);
         if (!investdoc.exists()) {
           setDoc(investorsRef, {
-            totalInvested: amt,
+            invInvested: amt,
           });
         } else {
           updateDoc(investorsRef, {
-            totalInvested: increment(amt),
+            invInvested: increment(amt),
           });
         }
 
