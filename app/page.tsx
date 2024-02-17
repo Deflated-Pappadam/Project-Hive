@@ -35,7 +35,7 @@ export default function Home() {
         </h2>
         <button
           onClick={toggleModal}
-          className="text-2xl poppins-semibold bg-[#2e2f33] text-white rounded-l-[40px] rounded-br-[40px] hover:rounded-tr-[40px]  px-6 py-4 m-5 transition-all"
+          className="text-2xl poppins-semibold bg-[#2e2f33] text-white rounded-tl-[40px] rounded-br-[40px]  hover:rounded-[40px]  px-6 py-4 m-5 transition-all"
         >
           Check it out!
         </button>
@@ -139,19 +139,19 @@ export default function Home() {
                 </h2>
              
                 <div className="flex items-center justify-center p-10">
-                  <div
-                    className="text-2xl poppins-semibold bg-[#2e2f33] text-white rounded-tl-[40px] rounded-br-[40px]   px-6 py-4 m-5 transition-all" //hover:rounded-tr-[40px] hover:rounded-bl-[40px]
+                  <a href="https://project-bit-bites.vercel.app/"
+                    className="text-2xl poppins-semibold bg-[#2e2f33] text-white rounded-tl-[40px] rounded-br-[40px] hover:rounded-[40px]  px-6 py-4 m-5 transition-all" //hover:rounded-tr-[40px] hover:rounded-bl-[40px]
                   >
-                    Project Hive
-                  </div>
-                  <h2>Join us to experience it firsthand!</h2>
+                    BIT BYTE
+                  </a>
+                  <h2>Check out our latest donation campaign.</h2>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
+    
       <section id="blackBox" className="p-5">
         <div className="f md:w-[80vw] bg-[#2e2f33]  rounded-[3rem] h-full py-[2vw] md:px-[4vw] justify-center items-center ">
           <h1 className="md:text-[4rem] text-[3rem] text-[#f3e6bc] px-[3vw] poppins-regular text-center pb-5">
