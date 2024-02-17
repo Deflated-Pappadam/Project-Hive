@@ -1,6 +1,6 @@
 "use client";
 
-import { ethers } from "ethers";
+import { ethers, uuidV4 } from "ethers";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -10,7 +10,7 @@ import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import { db, getUser } from "@/app/utils/firebase";
 import { useRouter } from "next/navigation";
 import { User } from "firebase/auth";
-import FishTank from "@/abi/FishTank.json";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Component() {
   const [Name, setName] = useState("");
@@ -25,24 +25,7 @@ export default function Component() {
     { cost: 0, description: "" },
     { cost: 0, description: "" },
   ]);
-  const [accounts, setAccounts] = useState([]);
-  const [isConnected, setIsConnected] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
-
-
-  useEffect(() => {
-    console.log(accounts);
-    setIsConnected(Boolean(accounts[0]));
-  }, [isConnected, accounts]);
-
-  const connectAccount = async () => {
-    if (window.ethereum) {
-      const accounts = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
-      setAccounts(accounts);
-    }
-  };
 
   const router = useRouter();
 
@@ -58,31 +41,17 @@ export default function Component() {
   }, [router]);
 
   const issueIdea = async () => {
-    const contractAddress = '0x6BFb29fae7e780e85e462E175190753F03DC9585';
-    if (window.ethereum) {
-      const provider = new ethers.BrowserProvider(window.ethereum)
-      const signer = await provider?.getSigner();
-      const contract = new ethers.Contract(contractAddress, FishTank.abi, signer);
       try {
         setIsProcessing(true);
-        const id = await contract.count();
-        console.log(id);
-        const response = await contract.launch([milestones[0].cost, milestones[1].cost, milestones[2].cost], 1708628388);
-        await response.wait();
-        console.log(response);
-        setIsProcessing(false);
-        const NEW_ID = Number(id);
-        handleSubmit(NEW_ID.toString());
-        console.log("response:", response);
+        const id = uuidv4();
+        handleSubmit(id);
       } catch (err) {
         setIsProcessing(false);
         console.log("error:", err);
       }
-    }
   }
 
   const handleSubmit = async (id: string) => {  
-
     await setDoc(doc(db, "innovations", id), {
       User: curruser?.uid,
       Name: Name,
@@ -92,21 +61,12 @@ export default function Component() {
       Milestones: milestones,
       totalInvested: 0,
     });
+    setIsProcessing(false);
     router.push('/innovators/dash')
   };
 
   return (
     <div className="w-full h-full flex justify-center items-center  mx-auto">
-      {!isConnected ? (
-        <div className="w-full min-h-screen mt-5 flex items-center justify-center">
-          <button
-            onClick={connectAccount}
-            className="bg-[#2e2f33] text-3xl text-white px-6 py-4 rounded-xl hover:scale-[110%] transition-all duration-200"
-          >
-            Connect Wallet
-          </button>
-        </div>
-      ) : (
         <div className="container px-4 max-w-[50vw]">
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl xl:text-5xl/none">
@@ -257,7 +217,6 @@ export default function Component() {
             <Button onClick={issueIdea}>Submit</Button>
           </div>
         </div>
-      )}
     </div>
   );
 }
