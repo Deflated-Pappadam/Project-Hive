@@ -14,6 +14,7 @@ import {
   HTMLAttributes,
   useEffect,
   useState,
+  SetStateAction,
 } from "react";
 import {
   TableHead,
@@ -24,14 +25,31 @@ import {
   Table,
 } from "@/components/ui/table";
 import Navbar from "@/app/components/Navbar";
+import { DocumentData, collection, doc, getDocs } from "firebase/firestore";
+import { db } from "@/app/utils/firebase";
 
 export default function Component() {
   const [accounts, setAccounts] = useState([]);
   const [isConnected, setIsConnected] = useState(false);
+  const [investments, setInvestments] = useState<DocumentData[]>([]);
   useEffect(() => {
     console.log(accounts);
     setIsConnected(Boolean(accounts[0]));
   }, [isConnected, accounts]);
+
+  useEffect(() => {
+    if (!accounts[0]) return;
+    const investorRef = collection(db, "investors", accounts[0], "investments");
+    let data: DocumentData[] = [];
+    getDocs(investorRef).then((docs) => {
+      docs.forEach((doc) => {
+        data.push(doc.data());
+      });
+    });
+    setInvestments(data);
+    console.log(data);
+    
+  }, [accounts]);
 
   const connectAccount = async () => {
     if (window.ethereum) {
@@ -92,16 +110,18 @@ export default function Component() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  <TableRow>
-                    <TableCell className="font-medium">Kozhi Koodu</TableCell>
-                    <TableCell className="text-left">
-                      Rhon needs a home.
-                    </TableCell>
-                    <TableCell>home</TableCell>
-                    <TableCell>Rhon S George</TableCell>
+                  {investments.map((data, i) => (
+                    <TableRow key={i}>
+                      <TableCell className="font-medium">{}</TableCell>
+                      <TableCell className="text-left">
+                        {}
+                      </TableCell>
+                      <TableCell>home</TableCell>
+                      <TableCell>Rhon S George</TableCell>
 
-                    <TableCell className="text-right">$200/5000+</TableCell>
-                  </TableRow>
+                      <TableCell className="text-right">$200/5000+</TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </div>
