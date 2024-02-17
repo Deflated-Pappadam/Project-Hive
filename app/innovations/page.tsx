@@ -39,7 +39,7 @@ export default function Component() {
         setUserDetails(docs.data());
       }
     });
-  }, [curruser]);
+  }, [curruser, router]);
 
   useEffect(() => {
     const unsubscribe = () => {

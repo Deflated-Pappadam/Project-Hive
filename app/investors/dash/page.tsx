@@ -98,9 +98,9 @@ export default function Component() {
                   <CardTitle>Total Investment</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-3xl">$ 53,250</p>
+                  <p className="text-3xl">${investments.reduce((acc, curr) => acc + curr.data.totalInvested, 0)}</p>
                   <p className="pt-5">Wallet Number</p>
-                  <p className="text-lg "> xxxxxx - xxxxxxx -xxxx002238 </p>
+                  <p className="text-lg ">{accounts[0]}</p>
                   <p className="text-sm"></p>
                 </CardContent>
               </Card>
@@ -160,17 +160,6 @@ function CurvedlineChart(
               { x: "Apr", y: 145 },
               { x: "May", y: 26 },
               { x: "Jun", y: 154 },
-            ],
-          },
-          {
-            id: "Mobile",
-            data: [
-              { x: "Jan", y: 60 },
-              { x: "Feb", y: 48 },
-              { x: "Mar", y: 177 },
-              { x: "Apr", y: 78 },
-              { x: "May", y: 96 },
-              { x: "Jun", y: 204 },
             ],
           },
         ]}
