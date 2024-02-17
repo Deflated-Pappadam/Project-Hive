@@ -142,7 +142,7 @@ export default function Home() {
                   <a href="https://project-bit-bites.vercel.app/"
                     className="text-2xl poppins-semibold bg-[#2e2f33] text-white rounded-tl-[40px] rounded-br-[40px] hover:rounded-[40px]  px-6 py-4 m-5 transition-all" //hover:rounded-tr-[40px] hover:rounded-bl-[40px]
                   >
-                    BIT BYTE
+                    BIT BITES
                   </a>
                   <h2>Check out our latest donation campaign.</h2>
                 </div>
