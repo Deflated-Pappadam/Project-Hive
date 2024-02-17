@@ -7,10 +7,10 @@
 const hre = require("hardhat");
 
 async function main() {
-  const bitbite = await hre.ethers.deployContract("FishTank", []);
-  await bitbite.waitForDeployment();
+  const pdm = await hre.ethers.deployContract("FishTank", []);
+  await pdm.waitForDeployment();
   console.log(
-    `deployed to ${bitbite.target}`
+    `deployed to ${pdm.target}`
   );
 }
 

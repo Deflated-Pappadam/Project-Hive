@@ -100,8 +100,9 @@ function Signup() {
             onClick={handleLogin}
             className="bg-[#2e2f33] wfit px-4 py-3 text-white my-10 text-2xl "
           >
-            Login
+            Sign Up
           </button>
+          <a href="/innovators/login" className="text-[#2e2f33]  text-2xl text-center">Back to Log In</a>
         </form>
       </div>
     </div>
