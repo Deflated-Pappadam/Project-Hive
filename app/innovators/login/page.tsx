@@ -62,6 +62,7 @@ function Login() {
           />
 
           <button onClick={handleLogin} className="bg-[#2e2f33] wfit px-4 py-3 text-white my-10 text-2xl ">Login</button>
+          <a href="/innovators/signUp" className="text-[#2e2f33]  text-2xl text-center">Create an Account</a>
         </form>
       </div>
     </div>

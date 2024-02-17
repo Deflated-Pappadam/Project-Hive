@@ -18,7 +18,7 @@ function FaqBox(props:Props) {
     >
       <div>
         
-        <h1 className="text-white md:text-3xl text-sm  md:px-5 py-5 poppins-medium text-start">{props.question}</h1>
+        <h1 className="text-white md:text-3xl text-sm  md:px-5 py-5 poppins-regular text-start">{props.question}</h1>
         <h2 className={`text-white ${height == 100 ? "hidden" : "flex"} md:px-5 md:text-2xl text-sm poppins-light`}>
           {props.answer}
         </h2>
