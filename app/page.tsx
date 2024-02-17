@@ -3,10 +3,11 @@ import Navbar from "./components/Navbar";
 import Marquee from "react-fast-marquee";
 import TagBox from "./components/TagBox";
 import DataBox from "./components/DataBox";
+import FaqBox from "./components/FaqBox";
 // MAIN LANDING PAGE
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col p-10  text-[#2e2f33] items-center ">
+    <main className="flex min-h-screen flex-col md:p-10 p-3  text-[#2e2f33] items-center ">
       <Navbar />
       <section
         className="flex flex-col w-full h-full justify-center items-center min-h-screen"
@@ -34,7 +35,7 @@ export default function Home() {
             Struggling to bring your ideas to life? We&apos;ve got you covered!
           </h1>
         </Marquee>
-        <div className="flex flex-wrap w-[60%] mx-auto gap-6 justify-center items-center">
+        <div className="flex md:flex-warp md:flex-row flex-col md:w-[60%] mx-auto gap-6 justify-center items-center ">
           <TagBox text="Multi-Pillar System" color="#f3d6b3" />
           <TagBox text="Core Verification" color="#f3e6b3" />
           <TagBox text="Enhanced Exposure" color="#eacbac" />
@@ -46,7 +47,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col bg-[#f3e6bc] w-full h-full justify-center items-center p-10 my-10 rounded-[3rem]">
+      <section className="flex flex-col bg-[#f3e6bc] w-full h-full justify-center items-center md:p-10 my-10 rounded-[3rem]">
         <h1 className="text-[4rem] poppins-regular">Scenarios</h1>
         <h2 className="text-[2rem] poppins-light text-center">
           Requests are managed in accordance with specified requirements and
@@ -70,7 +71,7 @@ export default function Home() {
         </div>
       </section>
       <section id="blackBox">
-        <div className="flex w-[80vw] bg-[#2e2f33]  rounded-[3rem] h-full p-[5vw]  justify-center items-center ">
+        <div className="flex flex-col md:flex-row md:w-[80vw] bg-[#2e2f33]  rounded-[3rem] h-full p-[5vw]  justify-center items-center ">
           <div className="flex min-h-full">
             <Image
               alt=""
@@ -81,7 +82,7 @@ export default function Home() {
             />
           </div>
           <div className=" flex flex-col justify-start items-start">
-            <h1 className="text-[4rem] text-[#f3e6bc] px-[1vw] poppins-regular">
+            <h1 className="md:text-[4rem] text-[3rem] text-[#f3e6bc] px-[1vw] poppins-regular">
               Heading Something
             </h1>
             <div className="flex w-fit px-[5vw] p-5">
@@ -138,6 +139,9 @@ export default function Home() {
         id="faq"
       >
         <h1 className="text-[4rem] protest-strike-regular">FAQ</h1>
+        <div>
+          <FaqBox/>
+        </div>
       </section>
     </main>
   );

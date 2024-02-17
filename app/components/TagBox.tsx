@@ -8,7 +8,7 @@ type Props = {
   
 function TagBox(props: Props) {
   return (
-    <div style={{"backgroundColor": props.color}} className={`py-3 px-4 poppins-semibold text-xl w-fit rounded-lg`}>{props.text}</div>
+    <div style={{"backgroundColor": props.color}} className={`py-3 px-4 poppins-semibold text-xl w-fit rounded-lg shrink-0`}>{props.text}</div>
   )
 }
 
