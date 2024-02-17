@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![HACK4TKM](https://github.com/Deflated-Pappadam/FishTank/assets/79042374/7fab2bb3-4a4a-4d49-b6e0-4951a22f2465)
 
-## Getting Started
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Project Hive - HACK4TKM
+Tell us about your project here
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Team Members
+[1.Ritin S George](https://github.com/aurora-0025)   
+[2.Rhon George D](https://github.com/Hipster16e)   
+[3.Adithya Krishnan](https://github.com/fal3n-4ngel)   
+[4.Vinu B Kurup](https://github.com/Rhogneld)   
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Link to Project
+[The Project Hive]([live_link](https://the-project-hive.vercel.app/))
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## How it Works ?
+Explaining the working of project  
+Embed video of project demo
 
-## Learn More
+## Technologies used
+List out tech stacks you have used
 
-To learn more about Next.js, take a look at the following resources:
+## How to configure
+Instructions for setting up project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How to Run
+Instructions for running
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Other Links
+Provide any other links ( for eg. Wireframe , UI, Abstract, Presentation )

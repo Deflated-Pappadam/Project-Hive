@@ -39,10 +39,38 @@ export default function Component() {
   const [accounts, setAccounts] = useState([]);
   const [isConnected, setIsConnected] = useState(false);
   const [investments, setInvestments] = useState<DocumentData[]>([]);
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
     setIsConnected(Boolean(accounts[0]));
   }, [isConnected, accounts]);
+
+  const checkIfWalletIsConnected = async () => {
+    try {
+      const { ethereum } = window;
+
+      if (!ethereum) {
+        console.log("Use Metamask!");
+      } else {
+        console.log("Ethereum object found", ethereum);
+      }
+
+      const accounts = await ethereum.request({ method: "eth_accounts" });
+      setAccounts(accounts);
+      if (accounts !== 0) {
+        const account = accounts[0];
+        console.log("Found an authorized account ", account);
+        setIsConnected(Boolean(account));
+      } else {
+        console.log("Could not find an authorized account");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    checkIfWalletIsConnected();
+  }, []);
 
   useEffect(() => {
     if (!accounts[0]) return;
@@ -54,7 +82,7 @@ export default function Component() {
         const ideaRef = doc(db, "innovations", document.id);
         const promise = getDoc(ideaRef).then((d) => {
           if (d.exists()) {
-            ideaData.push({id: document.id, data: d.data()!});
+            ideaData.push({ id: document.id, data: d.data()! });
           }
         });
         ideaDataPromises.push(promise);
@@ -98,7 +126,13 @@ export default function Component() {
                   <CardTitle>Total Investment</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-3xl">${investments.reduce((acc, curr) => acc + curr.data.totalInvested, 0)}</p>
+                  <p className="text-3xl">
+                    $
+                    {investments.reduce(
+                      (acc, curr) => acc + curr.data.totalInvested,
+                      0
+                    )}
+                  </p>
                   <p className="pt-5">Wallet Number</p>
                   <p className="text-lg ">{accounts[0]}</p>
                   <p className="text-sm"></p>
@@ -125,9 +159,16 @@ export default function Component() {
                 </TableHeader>
                 <TableBody>
                   {investments.map((d, i) => (
-                    <TableRow onClick={()=> router.push(`/idea/${d.id}`)} key={i}>
-                      <TableCell className="font-medium">{d.data.Name}</TableCell>
-                      <TableCell className="text-left">{d.data.Description}</TableCell>
+                    <TableRow
+                      onClick={() => router.push(`/idea/${d.id}`)}
+                      key={i}
+                    >
+                      <TableCell className="font-medium">
+                        {d.data.Name}
+                      </TableCell>
+                      <TableCell className="text-left">
+                        {d.data.Description}
+                      </TableCell>
                       <TableCell className="text-right">
                         {d.data.totalInvested}
                       </TableCell>
@@ -141,73 +182,69 @@ export default function Component() {
       )}
     </div>
   );
-}
 
-function CurvedlineChart(
-  props: JSX.IntrinsicAttributes &
-    ClassAttributes<HTMLDivElement> &
-    HTMLAttributes<HTMLDivElement>
-) {
-  return (
-    <div {...props}>
-      <ResponsiveLine
-        data={[
-          {
-            id: "Desktop",
-            data: [
-              { x: "Jan", y: 43 },
-              { x: "Feb", y: 137 },
-              { x: "Mar", y: 61 },
-              { x: "Apr", y: 145 },
-              { x: "May", y: 26 },
-              { x: "Jun", y: 154 },
-            ],
-          },
-        ]}
-        margin={{ top: 10, right: 10, bottom: 40, left: 40 }}
-        xScale={{
-          type: "point",
-        }}
-        yScale={{
-          type: "linear",
-          min: 0,
-          max: "auto",
-        }}
-        curve="monotoneX"
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-          tickSize: 0,
-          tickPadding: 16,
-        }}
-        axisLeft={{
-          tickSize: 0,
-          tickValues: 5,
-          tickPadding: 16,
-        }}
-        colors={["#2563eb", "#e11d48"]}
-        pointSize={6}
-        useMesh={true}
-        gridYValues={6}
-        theme={{
-          tooltip: {
-            chip: {
-              borderRadius: "9999px",
+  function CurvedlineChart(
+    props: JSX.IntrinsicAttributes &
+      ClassAttributes<HTMLDivElement> &
+      HTMLAttributes<HTMLDivElement>
+  ) {
+    return (
+      <div {...props}>
+        <ResponsiveLine
+          data={[
+            {
+              id: "Contributions",
+              data: investments.map((d) => ({
+                x: d.data.Name,
+                y: d.data.totalInvested,
+              })),
             },
-            container: {
-              fontSize: "12px",
-              textTransform: "capitalize",
-              borderRadius: "6px",
+          ]}
+          margin={{ top: 10, right: 10, bottom: 40, left: 40 }}
+          xScale={{
+            type: "point",
+          }}
+          yScale={{
+            type: "linear",
+            min: 0,
+            max: "auto",
+          }}
+          curve="monotoneX"
+          axisTop={null}
+          axisRight={null}
+          axisBottom={{
+            tickSize: 0,
+            tickPadding: 16,
+          }}
+          axisLeft={{
+            tickSize: 0,
+            tickValues: 5,
+            tickPadding: 16,
+          }}
+          colors={["#2563eb", "#e11d48"]}
+          pointSize={6}
+          useMesh={true}
+          gridYValues={6}
+          theme={{
+            tooltip: {
+              chip: {
+                borderRadius: "9999px",
+              },
+              container: {
+                fontSize: "12px",
+                textTransform: "capitalize",
+                borderRadius: "6px",
+              },
             },
-          },
-          grid: {
-            line: {
-              stroke: "#f3f4f6",
+            grid: {
+              line: {
+                stroke: "#f3f4f6",
+              },
             },
-          },
-        }}
-        role="application"
-      />
-    </div>
-  );
+          }}
+          role="application"
+        />
+      </div>
+    );
+  }
 }
