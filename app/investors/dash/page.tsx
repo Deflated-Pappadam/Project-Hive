@@ -8,7 +8,13 @@ import {
   Card,
 } from "@/components/ui/card";
 import { ResponsiveLine } from "@nivo/line";
-import { JSX, ClassAttributes, HTMLAttributes, useEffect, useState } from "react";
+import {
+  JSX,
+  ClassAttributes,
+  HTMLAttributes,
+  useEffect,
+  useState,
+} from "react";
 import {
   TableHead,
   TableRow,
@@ -18,11 +24,10 @@ import {
   Table,
 } from "@/components/ui/table";
 import Navbar from "@/app/components/Navbar";
-import TagBox from "@/app/components/TagBox";
 
 export default function Component() {
   const [accounts, setAccounts] = useState([]);
-  const [isConnected, setIsConnected] = useState(false)
+  const [isConnected, setIsConnected] = useState(false);
   useEffect(() => {
     console.log(accounts);
     setIsConnected(Boolean(accounts[0]));
@@ -35,64 +40,74 @@ export default function Component() {
       });
       setAccounts(accounts);
     }
-  };  
+  };
   return (
-    <div className="bg-[#fcf9f5] min-h-screen p-8">
+    <div className="bg-[#fcf9f5] min-h-screen relative">
       <Navbar />
-      <div className=" mx-auto bg-[#f9f7f6] rounded-3xl shadow-2xl p-[5vw]  gap-6">
-        <main className="col-span-9">
-          <header className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold">Dashboard</h1>
-          </header>
-          <div className="grid grid-cols-2 gap-6">
-            <Card className="col-span-1 bg-[#635FC7] text-white rounded-xl p-4">
-              <CardHeader>
-                <CardTitle>Total Investment</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-3xl">$ 53,250</p>
-                <p className="pt-5">Wallet Number</p>
-                <p className="text-lg "> xxxxxx - xxxxxxx -xxxx002238 </p>
-                <p className="text-sm"></p>
-              </CardContent>
-            </Card>
-            <div className="col-span-1">
-              <CurvedlineChart className="w-full h-[200px]" />
-              <div className="flex justify-between text-sm mt-2">
-                <span>USD</span>
-                <span>IDR</span>
+      {!isConnected ? (
+        <div className="absolute w-full h-full flex items-center justify-center">
+          <button
+            onClick={connectAccount}
+            className="p-2 bg-[#4b5443] rounded-md text-white font-semibold"
+          >
+            Connect Wallet
+          </button>
+        </div>
+      ) : (
+        <div className=" mx-auto bg-[#f9f7f6] rounded-3xl shadow-2xl p-[5vw]  gap-6">
+          <main className="col-span-9">
+            <header className="flex justify-between items-center mb-6">
+              <h1 className="text-2xl font-bold">Dashboard</h1>
+            </header>
+            <div className="grid grid-cols-2 gap-6">
+              <Card className="col-span-1 bg-[#635FC7] text-white rounded-xl p-4">
+                <CardHeader>
+                  <CardTitle>Total Investment</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-3xl">$ 53,250</p>
+                  <p className="pt-5">Wallet Number</p>
+                  <p className="text-lg "> xxxxxx - xxxxxxx -xxxx002238 </p>
+                  <p className="text-sm"></p>
+                </CardContent>
+              </Card>
+              <div className="col-span-1">
+                <CurvedlineChart className="w-full h-[200px]" />
+                <div className="flex justify-between text-sm mt-2">
+                  <span>USD</span>
+                  <span>IDR</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="mt-4">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                <TableHead>Innovation</TableHead>
-              <TableHead>Description</TableHead>
-              <TableHead>Category</TableHead>
-              <TableHead>Innovator</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="font-medium">Kozhi Koodu</TableCell>
-                  <TableCell className="text-left">
-                    Rhon needs a home.
-                  </TableCell>
-                  <TableCell>home</TableCell>
-                  <TableCell>Rhon S George</TableCell>
-                 
-                  <TableCell className="text-right">$200/5000+</TableCell>
-                </TableRow>
-                
-              </TableBody>
-            </Table>
-          </div>
-        </main>
-      </div>
+            <div className="mt-4">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Innovation</TableHead>
+                    <TableHead>Description</TableHead>
+                    <TableHead>Category</TableHead>
+                    <TableHead>Innovator</TableHead>
+                    <TableHead className="text-right">Amount</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-medium">Kozhi Koodu</TableCell>
+                    <TableCell className="text-left">
+                      Rhon needs a home.
+                    </TableCell>
+                    <TableCell>home</TableCell>
+                    <TableCell>Rhon S George</TableCell>
+
+                    <TableCell className="text-right">$200/5000+</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+          </main>
+        </div>
+      )}
     </div>
   );
 }

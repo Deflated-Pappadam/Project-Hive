@@ -86,7 +86,7 @@ export default function Component({ params }: { params: { id: string } }) {
   const [totalMinted, setTotalMinted] = useState(0);
   const [amount, setAmount] = useState<number | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [showThankyouMsg, setshowThankyouMsg] = useState(true);
+  const [showThankyouMsg, setshowThankyouMsg] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const onAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -122,6 +122,19 @@ export default function Component({ params }: { params: { id: string } }) {
         updateDoc(innovationsRef, {
           totalInvested: increment(amt),
         });
+
+        const investorsRef = doc(db, 'investors', accounts[0], 'investments', params.id);
+        const investdoc = await getDoc(investorsRef)
+        if(!investdoc){
+          setDoc(investorsRef, {
+            totalInvested: amt
+          })
+        }
+        else {
+        updateDoc(investorsRef, { 
+            totalInvested: increment(amt),
+        });
+      }
 
         setIsProcessing(false);
         setshowThankyouMsg(true);
