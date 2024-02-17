@@ -3,40 +3,42 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "@/app/utils/firebase";
+import { db, getUser } from "@/app/utils/firebase";
+import { useRouter } from "next/navigation";
+import { User } from "firebase/auth";
 
 export default function Component() {
   const [Name, setName] = useState("");
   const [Description, setDescription] = useState("");
   const [requirements, setRequirements] = useState("");
   const [Equity, setEquity] = useState(false);
-  const [milestones, setMilestone] = useState([]);
+  const [curruser, setCurrUser] = useState<User | null>(null);
+  const [milestones, setMilestone] = useState<{cost: number, description: string}[]>([{cost: 0, description: ""}, {cost: 0, description: ""}, {cost: 0, description: ""}]);
+
+  const router = useRouter()
+
+  useEffect(() => {
+    return getUser((user) => {
+      if(!user) {
+        router.push("/innovators/login");
+      }
+      else {
+        console.log(user);
+        setCurrUser(user);
+      }
+    })
+  }, [])
 
   const handleSubmit = () => {
     addDoc(collection(db, "innovations"), {
+      User: curruser?.uid,
       Name: Name,
       Description: Description,
       Requirements: requirements,
       Equity: Equity,
-      Milestones: [
-        {
-          Name: "MileStone 1",
-          Cost: 1000,
-          Status: "incomplete",
-        },
-        {
-          Name: "MileStone 2",
-          Cost: 2000,
-          Status: "incomplete",
-        },
-        {
-          Name: "MileStone 3",
-          Cost: 4000,
-          Status: "incomplete",
-        },
-      ],
+      Milestones: milestones,
     });
   };
 
@@ -108,11 +110,21 @@ export default function Component() {
               className="peer h-10 w-full rounded-md border p-4"
               id="milestone1"
               placeholder="Enter the amount"
+              onChange={(e) => {
+                milestones[0].cost = Number(e.target.value);
+                setMilestone([...milestones]);
+              }}
+              value={milestones[0].cost}
             />
             <textarea
               className="flex min-h-[80px] w-full rounded-md border p-4 "
               placeholder="Milestone description"
               id="milestone1-description"
+              onChange={(e) => {
+                milestones[0].description = e.target.value;
+                setMilestone([...milestones]);
+              }}
+              value={milestones[0].description}
             />
           </div>
 
@@ -121,17 +133,27 @@ export default function Component() {
               className="block text-sm font-semibold tracking-wide peer"
               htmlFor="idea-requirements"
             >
-              Milestone 1
+              Milestone 2
             </label>
             <input
               className="peer h-10 w-full rounded-md border p-4"
               id="milestone2"
               placeholder="Enter the amount"
+              onChange={(e) => {
+                milestones[1].cost =  Number(e.target.value);
+                setMilestone([...milestones]);
+              }}
+              value={milestones[1].cost}
             />
             <textarea
               className="flex min-h-[80px] w-full rounded-md border p-4 "
               placeholder="Milestone description"
               id="milestone2-description"
+              onChange={(e) => {
+                milestones[1].description = e.target.value;
+                setMilestone([...milestones]);
+              }}
+              value={milestones[1].description}
             />
           </div>
 
@@ -140,17 +162,27 @@ export default function Component() {
               className="block text-sm font-semibold tracking-wide peer"
               htmlFor="idea-requirements"
             >
-              Milestone 1
+              Milestone 3
             </label>
             <input
               className="peer h-10 w-full rounded-md border p-4"
               id="milestone3"
               placeholder="Enter the amount"
+              onChange={(e) => {
+                milestones[2].cost =  Number(e.target.value);
+                setMilestone([...milestones]);
+              }}
+              value={milestones[2].cost}
             />
             <textarea
               className="flex min-h-[80px] w-full rounded-md border p-4 "
               placeholder="Milestone description"
               id="milestone3-description"
+              onChange={(e) => {
+                milestones[2].description = e.target.value;
+                setMilestone([...milestones]);
+              }}
+              value={milestones[2].description}
             />
           </div>
           <div className="flex items-center space-x-2">
