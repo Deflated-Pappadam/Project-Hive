@@ -98,10 +98,10 @@ export default function Component() {
   return (
     <div className="w-full h-full flex justify-center items-center  mx-auto">
       {!isConnected ? (
-        <div className="w-full mt-5 flex items-center justify-center">
+        <div className="w-full min-h-screen mt-5 flex items-center justify-center">
           <button
             onClick={connectAccount}
-            className="p-2 bg-[#57a00d] rounded-md text-white font-semibold"
+            className="bg-[#2e2f33] text-3xl text-white px-6 py-4 rounded-xl hover:scale-[110%] transition-all duration-200"
           >
             Connect Wallet
           </button>
