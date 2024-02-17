@@ -1,7 +1,11 @@
 "use client";
+import { db, getUser } from "@/app/utils/firebase";
 import { ResponsiveLine } from "@nivo/line";
+import { User } from "firebase/auth";
+import { DocumentData, doc, getDoc } from "firebase/firestore";
 import Image from "next/image";
-import { ClassAttributes, HTMLAttributes, useState } from "react";
+import { useRouter } from "next/navigation";
+import { ClassAttributes, HTMLAttributes, useEffect, useState } from "react";
 
 function CurvedlineChart(
   props: JSX.IntrinsicAttributes &
@@ -54,8 +58,30 @@ function CurvedlineChart(
   );
 }
 
-export default function Component() {
+export default function Component({params} : {params: {id: string}}) {
   const [progress, setprogress] = useState(50);
+  const [curuser, setCuruser] = useState<User | null>()
+  const [ideaDetails, setIdeaDetails] = useState<DocumentData>()
+  const [userDetails, setUserDetails] = useState<DocumentData>()
+  const router = useRouter()
+
+  useEffect(() => {
+    return getUser( async (user) => {
+      if(!user) {
+        router.push('/login');
+      }
+      else{
+        setCuruser(user);
+        const docs = await getDoc(doc(db, 'user', user.uid))
+        console.log(docs.data())
+        setUserDetails(docs.data())
+        const d = await getDoc(doc(db, 'innovations', params.id))
+        console.log(d.data());
+        setIdeaDetails(d.data());
+      }
+    })
+  }, [curuser])
+
   return (
     <div className="w-full">
       <div className="bg-gray-50">
@@ -63,13 +89,12 @@ export default function Component() {
           <div className="grid gap-4 mx-auto items-center space-y-4  lg:grid-cols-2  md:py-10 ">
             <div className="space-y-2">
               <h1 className="text-[7rem] poppins-medium">
-                Idea Name
+                {ideaDetails?.Name}
               </h1>
-              <p className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                hdhgsdjh fhshd dskjhfs skhfks heofhwe fsdhfhwe fwekjhf hdhgsdjh
-                fhshd dskjhfs skhfks heofhwe fsdhfhwe fwekjhf hdhgsdjh fhshd
-                dskjhfs skhfks heofhwe fsdhfhwe fwekjhf
+              <p className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 mb-7">
+                {ideaDetails?.Description}
               </p>
+              <button className="p-5 w-[200px] bg-green-400 text-white rounded-2xl" style={{display: userDetails?.role=='innovators'? 'none': 'block'}}>Invest</button>
             </div>
             <div className="mx-auto">
               <Image
