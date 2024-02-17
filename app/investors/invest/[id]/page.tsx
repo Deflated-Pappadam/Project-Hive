@@ -123,6 +123,11 @@ export default function Component({ params }: { params: { id: string } }) {
           totalInvested: increment(amt),
         });
 
+        const investorsRef = doc(db, 'investors', accounts[0], 'investments', params.id);
+        updateDoc(investorsRef, { 
+            totalInvested: increment(amt),
+        });
+
         setIsProcessing(false);
         setshowThankyouMsg(true);
       } catch (err) {
