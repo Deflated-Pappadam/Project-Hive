@@ -208,12 +208,6 @@ export default function Component() {
                 value={milestones[2].description}
               />
             </div>
-            <div className="flex items-center space-x-2">
-              <Checkbox id="equity" onChange={() => setEquity(!Equity)} />
-              <label className="text-sm leading-none" htmlFor="equity">
-                Require equity for this idea
-              </label>
-            </div>
             <Button onClick={issueIdea} className="bg-[#2e2f33]  text-white px-6 py-4 text-center">Submit</Button>
           </div>
         </div>

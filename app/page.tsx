@@ -142,7 +142,7 @@ export default function Home() {
                   <div
                     className="text-2xl poppins-semibold bg-[#2e2f33] text-white rounded-tl-[40px] rounded-br-[40px]   px-6 py-4 m-5 transition-all" //hover:rounded-tr-[40px] hover:rounded-bl-[40px]
                   >
-                    some text
+                    Project Hive
                   </div>
                   <h2>Join us to experience it firsthand!</h2>
                 </div>

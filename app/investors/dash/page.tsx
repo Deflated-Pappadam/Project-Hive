@@ -148,6 +148,7 @@ export default function Component() {
             </div>
 
             <div className="mt-4">
+              <a href="/innovations" className="bg-[#2e2f33] px-4 py-2 w-fit text-white poppins-regular text-3xl justify-end flex hover:rounded-[1.5rem] hover:cursor-pointer transition-all duration-300">Explore </a>
               <Table>
                 <TableHeader>
                   <TableRow>
