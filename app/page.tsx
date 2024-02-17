@@ -243,7 +243,8 @@ Investing in initiatives featured on this platform may or may not present the po
       </section>
 
       <footer className="min-h-[40vh] w-full  bg-[#2e2f33] rounded-t-[3rem] mt-[4rem]">
-        .
+        <h1 className="text-[4rem]">Project Hive</h1>
+        <h2>tagline</h2>
       </footer>
     </main>
   );
