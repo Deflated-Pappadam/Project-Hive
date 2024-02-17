@@ -242,9 +242,10 @@ Investing in initiatives featured on this platform may or may not present the po
         </div>
       </section>
 
-      <footer className="min-h-[40vh] w-full  bg-[#2e2f33] rounded-t-[3rem] mt-[4rem]">
-        <h1 className="text-[4rem]">Project Hive</h1>
-        <h2>tagline</h2>
+      <footer className="flex flex-col justify-center items-center min-h-[40vh] w-full  bg-[#2e2f33]  mt-[10rem] p-[5vw]">
+        <h1 className="text-[4rem] text-white">Project Hive</h1>
+        <h2 className="text-[2rem] text-white">Re-volutionizing the scope of Crowdfunders and Donation-drives</h2>
+        <h3 className="text-[1rem] text-white p-4"> ©️ deflatted pappadam 2024</h3>
       </footer>
     </main>
   );

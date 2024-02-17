@@ -77,7 +77,7 @@ export default function Component({ params }: { params: { id: string } }) {
         const d = await getDoc(doc(db, "innovations", params.id));
       
         setIdeaDetails(d.data());
-        setprogress(d.data()?.totalInvested)
+        setprogress(Number.parseFloat(((d.data()?.totalInvested/d.data()?.Milestones[2].cost)*100).toFixed(2)))
        
       }
     });
@@ -93,8 +93,8 @@ export default function Component({ params }: { params: { id: string } }) {
           </p>
         </div>
         <section id="milestone" className="my-10 border  border-gray-700 p-10">
-          <h1 className="text-[4rem] poppins-regular p-5"> Progress</h1>
-          <div className="relative flex w-[30vw] bg-[#2e2f33]  rounded-full mx-auto h-[30px]   items-center">
+          <h1 className="text-[2.5rem] poppins-regular py-5"> Progress</h1>
+          <div className="relative flex w-[30vw] bg-[#2e2f33]  rounded-full mx-auto h-[30px]   items-center ">
             <div
               className={` h-[30px] bg-green-300 rounded-full`}
               style={{ width: `${(progress/100)*30}vw` }}
@@ -103,8 +103,9 @@ export default function Component({ params }: { params: { id: string } }) {
               className={`absolute  flex flex-col top-[-1.7vw]  h-[30px]`}
               style={{ left: `${(progress/100)*30}vw` }}
             >
-              <div> Progress : {progress}%</div>
+              <div>{ideaDetails?.totalInvested} $</div>
               <div className="w-[10px] h-[15px] bg-[#2e2f33] rounded-full"></div>
+              {progress>=33.33 && <span  className="text-red-700 mt-[40px]">* awaiting confirmation</span>} 
             </div>
             <div className="absolute left-[9vw]  text-center w-[40px] h-[40px] bg-green-700 rounded-full flex justify-center items-center z-[10]">
               1
