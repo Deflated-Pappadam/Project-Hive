@@ -22,7 +22,8 @@ function Signup() {
 
 
 
-  const handleLogin = () => {
+  const handleLogin = (e: any) => {
+    e.preventDefault()
     createUserWithEmailAndPassword(auth, email, password).then(
       async (userDetails) => {
         console.log(userDetails);

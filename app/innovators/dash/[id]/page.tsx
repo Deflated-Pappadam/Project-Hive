@@ -7,6 +7,7 @@ import {
   TableBody,
   Table,
 } from "@/components/ui/table";
+import Image from "next/image";
 
 export default function Component() {
   return (
@@ -14,7 +15,7 @@ export default function Component() {
       <main className="flex-grow p-6 bg-[#fcf9f5]">
         <section id='profile' className="flex p-10 px-[6vw]">
           <div >
-            <img src="/profile.jpg" className="w-[200px] rounded-full overflow-hidden m-5"></img>
+            <Image src="/profile.jpg" className="w-[200px] rounded-full overflow-hidden m-5" alt={""} width={1080} height={1080}/>
           </div>
           <div className="p-10">
             <h1 className="text-[4rem] poppins-semibold"> Rhon S George</h1>

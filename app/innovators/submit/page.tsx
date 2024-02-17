@@ -91,6 +91,7 @@ export default function Component() {
       Equity: Equity,
       Milestones: milestones,
     });
+    router.push('/innovators/dash')
   };
 
   return (

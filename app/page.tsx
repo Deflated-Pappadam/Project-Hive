@@ -14,11 +14,12 @@ export default function Home() {
       >
         <h1 className="poppins-regular md:text-[4rem] text-[2rem] md:max-w-[60vw] text-center py-10">
           <span className="protest-strike-regular text-[#2e2f33]">
-            Re-volutionizing
+            Re-volutionizing &nbsp;
           </span>
-           the framework of collaborative initiatives  </h1>
+          the framework of collaborative initiatives{" "}
+        </h1>
         <h2 className="text-2xl poppins-regular text-center ">
-        Bridging the gap between innovators, supporters and investors.
+          Bridging the gap between innovators, supporters and investors.
         </h2>
         <a
           href="/login"
@@ -30,49 +31,113 @@ export default function Home() {
       <section id="aboutUS">
         <Marquee speed={160}>
           <h1 className="text-[8rem] poppins-regular">
-Struggling to bring your ideas to life? We&apos;ve got you covered!
+            Struggling to bring your ideas to life? We&apos;ve got you covered!
           </h1>
         </Marquee>
         <div className="flex flex-wrap w-[60%] mx-auto gap-6 justify-center items-center">
-          <TagBox text="Multi-Tier System" color="#f3d6b3" />
+          <TagBox text="Multi-Pillar System" color="#f3d6b3" />
           <TagBox text="Core Verification" color="#f3e6b3" />
-          <TagBox text="Public-Equity" color="#eacbac" />
+          <TagBox text="Enhanced Exposure" color="#eacbac" />
           <TagBox text="Requirement based" color="#f3e6b3" />
-          <TagBox text="" color="#f3e6b3" />
-          <TagBox text="Test Tag" color="#f3e6b3" />
-          <TagBox text="Test Tagdfgsdf" color="#eacbac" />
-          <TagBox text="Test Tag" color="#f3e6b3" />
+          <TagBox text="Simplified User Experience" color="#f3e6b3" />
+          <TagBox text="Blockchain integrated" color="#f3e6b3" />
+          <TagBox text="Factored Prioritization" color="#eacbac" />
+          <TagBox text="Idea Driven" color="#f3e6b3" />
         </div>
       </section>
 
-     
       <section className="flex flex-col bg-[#f3e6bc] w-full h-full justify-center items-center p-10 my-10 rounded-[3rem]">
-      <h1 className="text-[4rem] poppins-regular">
-           some heading
-      </h1>
-      <h2 className="text-[2rem] poppins-light text-center">
-           lorem ipsum askf ajhf  avfjhg asjfg agfiugwkesa asfgui lorem ipsum askf ajhf  avfjhg asjfg agfiugwkesa asfgui
-      </h2>
-       <div className="flex flex-wrap p-2 ">
-       <DataBox
-          img="https://assets-global.website-files.com/656e2bf7323334f83eee35f6/658055ed923b19afb55334ca_reportcard.png"
-          text=" Stay informed with digital health reports and records"
-        ></DataBox>
-        <DataBox
-          img="https://assets-global.website-files.com/656e2bf7323334f83eee35f6/658055ed923b19afb55334ca_reportcard.png"
-          text=" Stay informed with digital health reports and records"
-        ></DataBox>
-        <DataBox
-          img="https://assets-global.website-files.com/656e2bf7323334f83eee35f6/658055ed923b19afb55334ca_reportcard.png"
-          text=" Stay informed with digital health reports and records"
-        ></DataBox>
-       </div>
+        <h1 className="text-[4rem] poppins-regular">Scenarios</h1>
+        <h2 className="text-[2rem] poppins-light text-center">
+          Requests are managed in accordance with specified requirements and
+          preset conditions. (Name) primarily encompasses the following factors
+          that determine the state, essence, and fate of an initiative.
+        </h2>
+        <div className="flex flex-wrap p-2 ">
+          <DataBox
+            img="https://assets-global.website-files.com/656e2bf7323334f83eee35f6/658055ed923b19afb55334ca_reportcard.png"
+            text="Assuring exposure for deserving initiatives and ideas."
+          ></DataBox>
+          <DataBox
+            img="https://assets-global.website-files.com/656e2bf7323334f83eee35f6/658055ed923b19afb55334ca_reportcard.png"
+            text=" Monetary support via grants, acquisitions, and donations."
+          ></DataBox>
+          <DataBox
+            img="https://assets-global.website-files.com/656e2bf7323334f83eee35f6/658055ed923b19afb55334ca_reportcard.png"
+            text=" 
+          Technical aid through mentorship, labor, and advice."
+          ></DataBox>
+        </div>
       </section>
-      <section className=" w-full h-full flex flex-col justify-center " id="faq">
-      <h1 className="text-[4rem] protest-strike-regular">
-           FAQ
-      </h1>
-      
+      <section id="blackBox">
+        <div className="flex w-[80vw] bg-[#2e2f33]  rounded-[3rem] h-full p-[5vw]  justify-center items-center ">
+          <div className="flex min-h-full">
+            <Image
+              alt=""
+              width={1080}
+              height={1080}
+              src="/investor.png"
+              className="rounded-[3rem] w-[400px] h-[400px] "
+            />
+          </div>
+          <div className=" flex flex-col justify-start items-start">
+            <h1 className="text-[4rem] text-[#f3e6bc] px-[1vw] poppins-regular">
+              Heading Something
+            </h1>
+            <div className="flex w-fit px-[5vw] p-5">
+              <Image
+                src="/test.png"
+                className="w-[100px]"
+                alt=""
+                width={1080}
+                height={1080}
+              />
+              <div className="px-5">
+                <h2 className="text-[#fcf9f5] text-[2rem]">Sub Heading </h2>
+                <h3 className="text-[#fcf9f5] text-[1rem] poppins-light">
+                  Sub Heading
+                </h3>
+              </div>
+            </div>
+            <div className="flex w-fit px-[5vw] p-5">
+              <Image
+                src="/test.png"
+                className="w-[100px]"
+                alt=""
+                width={1080}
+                height={1080}
+              />
+              <div className="px-5">
+                <h2 className="text-[#fcf9f5] text-[2rem]">Sub Heading </h2>
+                <h3 className="text-[#fcf9f5] text-[1rem] poppins-light">
+                  Sub Heading
+                </h3>
+              </div>
+            </div>
+            <div className="flex w-fit px-[5vw] p-5">
+              <Image
+                src="/test.png"
+                className="w-[100px]"
+                alt=""
+                width={1080}
+                height={1080}
+              />
+              <div className="px-5">
+                <h2 className="text-[#fcf9f5] text-[2rem]">Sub Heading </h2>
+                <h3 className="text-[#fcf9f5] text-[1rem] poppins-light">
+                  Sub Heading
+                </h3>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <section
+        className=" w-full h-full flex flex-col justify-center "
+        id="faq"
+      >
+        <h1 className="text-[4rem] protest-strike-regular">FAQ</h1>
       </section>
     </main>
   );
