@@ -9,9 +9,9 @@ function Navbar() {
       </a>
       <h1 className="protest-strike-regular text-4xl">Project Hive</h1>
       <div className="flex justify-center md:min-w-[300px]">
-        <div className="md:flex hidden w-fit border-[2px] border-black md:px-4 py-2 rounded-lg poppins-semibold md:text-xl text-sm ">
+        <a href="/abstract.pdf" download className="md:flex hidden w-fit border-[2px] border-black md:px-4 py-2 rounded-lg poppins-semibold md:text-xl text-sm ">
           Download Abstract
-        </div>
+        </a>
       </div>
     </nav>
   );
