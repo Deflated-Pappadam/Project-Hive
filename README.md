@@ -1,10 +1,14 @@
 
+
+
 # Project Hive - HACK4TKM
+## Project Link
+[Project Hive](https://the-project-hive.vercel.app/)
 
 ## Problem Statement
 Acknowledging the absence of incentives in traditional crowdfunding and donation channels, particularly limiting their appeal, poses a significant challenge, especially in the context of rural development. Rural issues often receive less exposure compared to their urban counterparts. Consequently, we aim to construct a system that attracts both contributors and innovators by emphasizing a more effective, incentive-based crowdfunding and donation platform. Our goal is to establish a system where contributors receive returns, whether monetary or other benefits, fostering a more inclusive venture. This, in turn, advances our mission to promote food, agriculture, and rural development to a broader audience, a goal nearly unachievable through conventional methods.
 
-## Our SOlution
+## Our Solution
 The key solutions that we provide are :
 + Via Donations(Charity):
                                      Our aim is to transition the current donation platform framework to a blockchain-based model. This ensures transparency and secure fund transactions, all at a significantly lower cost compared to traditional methods such as bank-driven transactions. Each donor receives NFTs representing their transactions, serving as a tamper-proof digital record or allowing resale for potential financial returns.
@@ -23,8 +27,8 @@ General showcase of opportunities and ideas
 
 
 ## Team Members
-[1.Ritin S George](https://github.com/aurora-0025)   
-[2.Rhon George D](https://github.com/Hipster16e)   
+[1.Ritin George D](https://github.com/aurora-0025)   
+[2.Rhon S George](https://github.com/Hipster16e)   
 [3.Adithya Krishnan](https://github.com/fal3n-4ngel)   
 [4.Vinu B Kurup](https://github.com/Rhogneld)   
 
@@ -36,9 +40,9 @@ General showcase of opportunities and ideas
 
 ## Technologies used
 ```markdown
-# Frontend : Nextjs , Tailwind CSS
-# Database : Firebase (for user auth and private data storage)
-# Blockchain : Polygon(Mumbai Testnet) , Hardhat.js , Solidity
++ Frontend : Nextjs , Tailwind CSS
++ Database : Firebase (for user auth and private data storage)
++ Blockchain : Polygon(Mumbai Testnet) , Hardhat.js , Solidity
 ```
 ## Other Links
-[Ppt Link](https://www.canva.com/design/DAF9D0Nh6OQ/T3kNhuvsQepFALW2n_PDlw/edit)https://www.canva.com/design/DAF9D0Nh6OQ/T3kNhuvsQepFALW2n_PDlw/edit
+[Ppt Link](https://www.canva.com/design/DAF9D0Nh6OQ/T3kNhuvsQepFALW2n_PDlw/edit)
